@@ -1,6 +1,7 @@
-This repository contains a BiMap Implementation in Go
+This repository contains a Bidirectional Map Implementation in Go
 
 Details
+ - A bidirectional map maintains unique keys and values
  - Uses two maps, one mapping keys to values and another mapping values to keys
  - insert key value pair
     - inserting duplicate key value pair does nothing
