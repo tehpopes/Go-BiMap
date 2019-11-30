@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	bm "bimap"
 	"testing"
 	"github.com/stretchr/testify/assert"
