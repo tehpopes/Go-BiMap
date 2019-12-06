@@ -14,6 +14,8 @@ package bimap
 
 import (
 	"fmt"
+	//"log"
+	//"encoding/json"
 )
 
 type BiMap struct {
@@ -81,8 +83,40 @@ func (bm *BiMap) RemoveByValue(value interface{}) interface{} {
 	return key
 }
 
+func (bm *BiMap) Map() map[interface{}]interface{} {
+	newMap := make(map[interface{}]interface{})
+	for k,v := range bm.frontMap {
+		newMap[k] = v
+	}
+	return newMap	
+}
+
+func (bm *BiMap) Keys() []interface{} {
+	keys := make([]interface{}, 0, len(bm.frontMap))
+	for k := range bm.frontMap {
+		keys = append(keys,k)
+	}
+	return keys
+}
+
+func (bm *BiMap) Values() []interface{} {
+	vals := make([]interface{}, 0, len(bm.backMap))
+	for v := range bm.backMap {
+		vals = append(vals,v)
+	}
+	return vals
+}
+
 func (bm *BiMap) Print() {
 	for k, v := range bm.frontMap { 
 		fmt.Println("Key: ", k, " Value: ", v)
 	}
 }
+/*
+func (bm *BiMap) JSON() string {
+	jsonString, err := json.Marshal(bm.frontMap)
+	if err != nil {
+		log.Println(err)
+	}
+	return string(jsonString)
+}*/
